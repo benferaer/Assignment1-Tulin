@@ -30,8 +30,14 @@ public class SortManager
 			{
 				fileName = s.substring(2);
 			}
-			//else if (s.startsWith t for comparetype
-			//else if (s.startWith s for sorttype
+			else if (s.startsWith("-t") || s.startsWith("-T"))
+			{
+				compareType = s.charAt(2);
+			}
+			else if (s.startsWith("-s") || s.startsWith("-S"))
+			{
+				sortType = s.charAt(2);
+			}
 		}
 		
 		loadShapes();
