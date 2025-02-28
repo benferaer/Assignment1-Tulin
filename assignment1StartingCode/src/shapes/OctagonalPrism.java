@@ -1,9 +1,17 @@
 package shapes;
 
+/**
+ * 
+ * @author Tulin
+ */
+
 public class OctagonalPrism extends Shape
 {	
 	private double length;
 
+	/**
+	 * 
+	 */
 	public OctagonalPrism(double height, double length) 
 	{
 		super(height);

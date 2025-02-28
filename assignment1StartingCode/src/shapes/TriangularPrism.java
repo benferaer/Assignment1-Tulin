@@ -1,15 +1,27 @@
 package shapes;
 
+/**
+ * 
+ * @author Tulin
+ */
+
 public class TriangularPrism extends Shape
 {
 	private double length;
 
+	/**
+	 * 
+	 */
 	public TriangularPrism(double height, double length) 
 	{
 		super(height);
 		this.length = length;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public double getLength() 
 	{
 		return length;

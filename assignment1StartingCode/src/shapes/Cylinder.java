@@ -1,14 +1,26 @@
 package shapes;
 
+/**
+ * 
+ * @author Tulin
+ */
+
 public class Cylinder extends Shape
 {
 	private double radius;
-
+	
+	/**
+	 * 
+	 */
 	public Cylinder(double height, double radius) {
 		super(height);
 		this.radius = radius;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public double getRadius() {
 		return radius;
 	}
