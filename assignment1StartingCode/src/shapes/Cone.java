@@ -1,4 +1,5 @@
 package shapes;
+
 /**
  * Subclass of Shape representing a Cone with a radius
  * @author Tulin
@@ -7,12 +8,19 @@ public class Cone extends Shape
 {
 	private double radius;
 
+	/**
+	 * 
+	 */
 	public Cone(double height, double radius) 
 	{
 		super(height);
 		this.radius = radius;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public double getRadius() 
 	{
 		return radius;
