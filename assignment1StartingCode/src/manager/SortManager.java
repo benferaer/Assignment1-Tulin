@@ -94,6 +94,7 @@ public class SortManager
 		
 		//Prints the sorted Shapes array
 		printShapes();
+//		testPrint(); //For printing list of shapes and test sort results
 		
         // Calculate and print the elapsed time in milliseconds
         long elapsedTime = (endTime - startTime) / 1000000; // Convert to milliseconds
@@ -234,7 +235,7 @@ public class SortManager
 	    }
 
 	    // Print every 1000th element with aligned formatting
-	    for (int i = 999; i < shapes.length; i += 1000) 
+	    for (int i = 999; i < shapes.length-1; i += 1000) //i < shapes.length-1 ensures that the last element is not displayed twice
 	    {
 	        System.out.printf("%-20s %-12s %s\n", (i + 1) + "-th element:", shapes[i].getClass().getSimpleName(), getSortValue(shapes[i], compareType));
 	    }
@@ -247,7 +248,23 @@ public class SortManager
 
 	    System.out.println("\n========================================");
 	}
+	
+	//Method just for testing sort results of short files, i.e. shapes1.txt
+	private void testPrint() 
+	{
+	    System.out.println("\n========================================");
+	    System.out.println("           SORTING RESULTS");
+	    System.out.println("========================================\n");
 
+	    // Print every 1000th element with aligned formatting
+	    for (int i = 0; i < shapes.length; i ++) //i < shapes.length-1 ensures that the last element is not displayed twice
+	    {
+	        System.out.printf("%-20s %-12s %s\n", (i + 1) + "-th element:", shapes[i].getClass().getSimpleName(), getSortValue(shapes[i], compareType));
+	    }
+
+	    System.out.println("\n========================================");
+	}
+	
 	/**
 	 * Extracts the sorting attribute (Height, Volume, or Base Area) based on compareType.
 	 */
