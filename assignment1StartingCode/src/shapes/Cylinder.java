@@ -1,7 +1,7 @@
 package shapes;
 
 /**
- * 
+ * Subclass of Shape representing a Cylinder with a radius
  * @author Tulin
  */
 

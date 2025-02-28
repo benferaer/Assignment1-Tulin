@@ -16,16 +16,16 @@ public class QuickSortUtil
 	 * @param low Lower index limit of the array
 	 * @param high Higher index limit of the array
 	 */
-//	public static void random(Shape[] shapes, int low, int high)
-//	{
-//		if (low == high) return; //Needed to prevent invalid range
-//		Random rand= new Random(); 
-//        int pivot = low + rand.nextInt(high-low+1); 
-//         
-//        Shape temp1=shapes[pivot];  
-//        shapes[pivot]=shapes[high]; 
-//        shapes[high]=temp1; 
-//	}
+	public static void random(Shape[] shapes, int low, int high)
+	{
+		if (low == high) return; //Needed to prevent invalid range
+		Random rand= new Random(); 
+        int pivot = low + rand.nextInt(high-low+1); 
+         
+        Shape temp1=shapes[pivot];  
+        shapes[pivot]=shapes[high]; 
+        shapes[high]=temp1; 
+	}
 	
 	/**
 	 * Partition logic of quick sort. Initial quick sort algorithm was taken from Geeksforgeeks
@@ -36,8 +36,8 @@ public class QuickSortUtil
 	 */
 	public static int partition(Shape shapes[], int low, int high, char compareType)
 	{
-//		// pivot is chosen randomly 
-//        random(shapes,low,high);
+		// pivot is chosen randomly 
+        random(shapes,low,high);
         Shape pivot = shapes[high]; 
      
  

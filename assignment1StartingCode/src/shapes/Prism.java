@@ -23,6 +23,7 @@ public abstract class Prism extends Shape
 	}
 
 	/**
+	 * Returns the Side measurement of the Prism shape
      * @return The side length of the prism.
      */
 	public double getSide() 
@@ -33,7 +34,6 @@ public abstract class Prism extends Shape
 	/**
      * Calculates the volume of the prism.
      * Volume = multiplying the base area by the height.
-     * 
      * @return The volume of the prism.
      */
 
