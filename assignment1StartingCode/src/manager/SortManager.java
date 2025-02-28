@@ -13,6 +13,7 @@ import shapes.Shape;
 import shapes.SquarePrism;
 import shapes.TriangularPrism;
 import utilities.QuickSortUtil;
+import utilities.SelectionSort;
 import utilities.BubbleSort;
 import utilities.HeapSort;
 import utilities.InsertionSort;
@@ -76,6 +77,7 @@ public class SortManager
 			sortName = "Heap Sort";
 			break;
 		case 's':
+			SelectionSort.selectionSort(shapes, compareType);
 			sortName = "Selection Sort";
 			break;
 		case 'b':
