@@ -47,7 +47,7 @@ public class InsertionSort
             int j = i - 1;
             
             // Compare based on selected type and move elements that are smaller than key one position ahead (for descending order)
-            while (j >= 0 && compare(shapes[j], key, compareType) > 0) 
+            while (j >= 0 && compare(shapes[j], key, compareType) < 0) 
             {
                 shapes[j + 1] = shapes[j];
                 j--;
