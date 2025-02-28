@@ -51,8 +51,32 @@ public abstract class Shape implements Comparable<Shape>
 	 * @return volume
 	 */
 	public abstract double calcVolume();
-
 	
+	public int compareBaseArea(Shape other)
+	{
+		if(this.calcBaseArea() > other.calcBaseArea())
+		{
+			return 1;
+		}
+		if(this.calcBaseArea() < other.calcBaseArea())
+		{
+			return -1;
+		}
+		return 0;
+	}
+	
+	public int compareVolume(Shape other)
+	{
+		if(this.calcVolume() > other.calcVolume())
+		{
+			return 1;
+		}
+		if(this.calcVolume() < other.calcVolume())
+		{
+			return -1;
+		}
+		return 0;
+	}
 	
 	
 }

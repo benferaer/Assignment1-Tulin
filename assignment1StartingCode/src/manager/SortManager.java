@@ -12,6 +12,7 @@ import shapes.Pyramid;
 import shapes.Shape;
 import shapes.SquarePrism;
 import shapes.TriangularPrism;
+import utilities.QuickSortUtil;
 
 //refer to demo001 BasicFileIO.java for a simple example on how to
 		// read data from a text file
@@ -41,20 +42,35 @@ public class SortManager
 			{
 				fileName = s.substring(2);
 			}
-//			else if (s.startsWith("-t") || s.startsWith("-T"))
-//			{
-//				compareType = s.charAt(2);
-//			}
-//			else if (s.startsWith("-s") || s.startsWith("-S"))
-//			{
-//				sortType = s.charAt(2);
-//			}
+			else if (s.startsWith("-t") || s.startsWith("-T"))
+			{
+				compareType = s.charAt(2);
+			}
+			else if (s.startsWith("-s") || s.startsWith("-S"))
+			{
+				sortType = s.charAt(2);
+			}
 		}
 		
+		//Loads shapes from file
 		loadShapes();
+		
+		long startTime = System.nanoTime();
+		//Applies the identified sort method from args
+		switch (sortType)
+		{
+		case 'q':
+			QuickSortUtil.quicksort(shapes, 0, shapes.length - 1, compareType);
+			break;
+		}
+		
+		long endTime = System.nanoTime();
 		//placeholder to print shapes for testing loadShapes
 		printShapes();
-		
+        // Calculate the elapsed time in milliseconds
+        long elapsedTime = (endTime - startTime) / 1000000; // Convert to milliseconds
+        
+        System.out.println("Time taken to sort shapes: " + elapsedTime + " milliseconds");
 	}
 	
 	/**
@@ -69,6 +85,7 @@ public class SortManager
 	    //Taking the first line as the array length 
 	    int arrLength = Integer.parseInt(input.nextLine().trim());
 	    
+	    //Define the size of the array
 	    shapes = new Shape[arrLength];
 	    int index = 0;
 	    
@@ -133,11 +150,28 @@ public class SortManager
 	}
     }
 	
-	//placeholder method for printing shapes for checking
-	private void printShapes() {
-		for (Shape shape : shapes)
-		{
-			System.out.println(shape);
-		}
+	//Method for displaying the sorted array of shapes
+	private void printShapes() 
+	{
+		// If checks that the shape array has objects
+	    if (shapes.length > 0) 
+	    {
+	        System.out.println("First value: " + shapes[0]); //prints the first value
+	    }
+
+	    // Loop through the array and print every thousandth shape starting from the 1000th element (index 999)
+	    for (int i = 999; i < shapes.length - 1; i++) // shapes.length - 1 ensures that the last element is not printed in the thousandth's format
+	    {
+	        if ((i + 1) % 1000 == 0) // Print the 1000th element, 2000th element, and so on
+	        {  
+	            System.out.println((i + 1) + "-th element: " + shapes[i]);
+	        }
+	    }
+
+	    // Print the last shape
+	    if (shapes.length > 0) 
+	    {
+	        System.out.println("Last value: " + shapes[shapes.length - 1]); //prints the last value
+	    }
 	}
 }
