@@ -1,50 +1,39 @@
 package shapes;
 
 /**
- * 
+ * Subclass of Prism representing a Pentagonal Prism with a height and side length
  * @author Tulin
  */
 
-public class PentagonalPrism extends Shape
+public class PentagonalPrism extends Prism
 {
-	private double length;
 
 	/**
-	 * 
+	 * Creates a pentagonal prism with the specified height and base side length
+     * 
 	 */
-	public PentagonalPrism(double height, double length) 
+	public PentagonalPrism(double height, double side) 
 	{
-		super(height);
-		this.length = length;
+		super(height, side);
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Calculates the base area of the pentagonal prism
+	 * @return The base area of the pentagonal prism
 	 */
-	public double getLength() 
-	{
-		return length;
-	}
 
 	@Override
 	public double calcBaseArea() 
 	{
-		return ((5 * (length * length)) * Math.tan(0.942478)) / 4;
+		return ((5 * (getSide() * getSide())) * Math.tan(0.942478)) / 4;
 	}
 
 	@Override
-	public double calcVolume() 
-	{
-		return calcBaseArea() * height;
+	public String toString() {
+		return "PentagonalPrism [calcBaseArea()=" + calcBaseArea() + ", getSide()=" + getSide() + ", calcVolume()="
+				+ calcVolume() + ", getHeight()=" + getHeight() + "]";
 	}
 
-	@Override
-	public String toString() 
-	{
-		return "PentagonalPrism [length=" + length + ", getLength()=" + getLength() + ", calcBaseArea()="
-				+ calcBaseArea() + ", calcVolume()=" + calcVolume() + ", getHeight()=" + getHeight() + "]";
-	}
 	
 	
 }

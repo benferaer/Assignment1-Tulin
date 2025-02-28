@@ -1,50 +1,37 @@
 package shapes;
 
 /**
- * 
+ * Subclass of Prism representing a Triangular Prism with a height and side length
  * @author Tulin
  */
 
-public class TriangularPrism extends Shape
+public class TriangularPrism extends Prism
 {
-	private double length;
-
 	/**
-	 * 
+	 * Creates a triangular prism with the specified height and base side length
 	 */
-	public TriangularPrism(double height, double length) 
+	public TriangularPrism(double height, double side) 
 	{
-		super(height);
-		this.length = length;
+		super(height, side);
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Calculates the base area of the triangular prism
+	 * @return base area of the triangular prism
 	 */
-	public double getLength() 
-	{
-		return length;
-	}
 
 	@Override
 	public double calcBaseArea() 
 	{
-		return (length * length) * Math.sqrt(3) / 4;
+		return (getSide() * getSide()) * Math.sqrt(3) / 4;
 	}
 
 	@Override
-	public double calcVolume() 
-	{
-		return calcBaseArea() * height;
-	}
-
-	@Override
-	public String toString() 
-	{
-		return "TriangularPrism [getLength()=" + getLength() + ", calcBaseArea()=" + calcBaseArea() + ", calcVolume()="
+	public String toString() {
+		return "TriangularPrism [calcBaseArea()=" + calcBaseArea() + ", getSide()=" + getSide() + ", calcVolume()="
 				+ calcVolume() + ", getHeight()=" + getHeight() + "]";
 	}
+
 	
 
 }

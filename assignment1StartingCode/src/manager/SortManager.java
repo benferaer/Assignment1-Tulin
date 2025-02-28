@@ -13,27 +13,27 @@ import shapes.Shape;
 import shapes.SquarePrism;
 import shapes.TriangularPrism;
 import utilities.QuickSortUtil;
-import utilities.BubbleSort;  
+import utilities.BubbleSort;
+import utilities.HeapSort;
+import utilities.InsertionSort;
+import utilities.MergeSort;  
 
-//refer to demo001 BasicFileIO.java for a simple example on how to
-		// read data from a text file
-
-		// refer to demo01 Test.java for an example on how to parse command
-		// line arguments and benchmarking tests
-
-		// refer to demo02 Student.java for comparable implementation, and
-		// NameCompare.java or GradeCompare for comparator implementations
-
-		// refer to demo02 KittySort.java on how to use a custom sorting
-		// algorithm on a list of comparables to sort using either the
-		// natural order (comparable) or other orders (comparators)
+/**
+ * Sort Manager class that handles the programming flow
+ * @author Tulin
+ */
 public class SortManager 
 {
 	private Shape[] shapes;
 	private String fileName;
 	private char compareType;
 	private char sortType;
+	private String sortName;
 	
+	/**
+	 * Main method that runs the program, taking args of the AppDriver as the program input
+	 * @param args
+	 */
 	public SortManager(String[] args)
 	{
 		for(String s : args)
@@ -55,24 +55,47 @@ public class SortManager
 		
 		//Loads shapes from file
 		loadShapes();
-		sortShapes();
+//		sortShapes();
 		
+		//Starts sort timer
 		long startTime = System.nanoTime();
+		
 		//Applies the identified sort method from args
-		switch (sortType)
+		switch (Character.toLowerCase(sortType))
 		{
 		case 'q':
 			QuickSortUtil.quicksort(shapes, 0, shapes.length - 1, compareType);
+			sortName = "Quick Sort";
+			break;
+		case 'i':
+			InsertionSort.insertionSort(shapes, compareType);
+			sortName = "Insertion Sort";
+			break;
+		case 'h':
+			HeapSort.heapSort(shapes, compareType);
+			sortName = "Heap Sort";
+			break;
+		case 's':
+			sortName = "Selection Sort";
+			break;
+		case 'b':
+			sortName = "Bubble Sort";
+			break;
+		case 'm':
+			sortName = "Merge Sort";
 			break;
 		}
 		
+		//Ends sort timer
 		long endTime = System.nanoTime();
-		//placeholder to print shapes for testing loadShapes
+		
+		//Prints the sorted Shapes array
 		printShapes();
-        // Calculate the elapsed time in milliseconds
+		
+        // Calculate and print the elapsed time in milliseconds
         long elapsedTime = (endTime - startTime) / 1000000; // Convert to milliseconds
         
-        System.out.println("Time taken to sort shapes: " + elapsedTime + " milliseconds");
+        System.out.println(sortName + " run time was: " + elapsedTime + " milliseconds");
 	}
 	
 	/**
@@ -158,8 +181,38 @@ public class SortManager
 		{
 			if(sortType == 'b' || sortType == 'B')
 				{
-					BubbleSort.sort(shapes);
+					BubbleSort.bubbleSort(shapes);
 				}
+			else if (sortType == 'm' || sortType == 'M') 
+				{
+//	            	MergeSort.sort(shapes);
+				}
+			else if (sortType == 'i' || sortType == 'I') 
+				{
+	            	InsertionSort.insertionSort(shapes, compareType);
+				} 
+			else if (sortType == 'q' || sortType == 'Q') 
+				{
+	            	QuickSortUtil.quicksort(shapes, 0, shapes.length - 1, compareType);
+				} 
+			else if (sortType == 's' || sortType == 'S') 
+				{
+//	            	SelectionSort.sort(shapes);
+				} 
+			else if (sortType == 'z' || sortType == 'Z') 
+				{
+//					for researched method
+//            		.sort(shapes);
+				}
+		}
+		else if(compareType == 'a' || compareType == 'A')
+		{
+			
+		}
+		else if(compareType == 'v' || compareType == 'V')
+		{
+			
+		}
     }
 	
 	//Method for displaying the sorted array of shapes
