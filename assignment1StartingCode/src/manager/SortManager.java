@@ -81,6 +81,7 @@ public class SortManager
 			sortName = "Selection Sort";
 			break;
 		case 'b':
+			BubbleSort.bubbleSort(shapes, compareType);
 			sortName = "Bubble Sort";
 			break;
 		case 'm':
@@ -177,45 +178,45 @@ public class SortManager
 	}
   }
 
-  private void sortShapes()
-	{
-		if(compareType == 'h' || compareType == 'H')
-		{
-			if(sortType == 'b' || sortType == 'B')
-				{
-					BubbleSort.bubbleSort(shapes);
-				}
-			else if (sortType == 'm' || sortType == 'M') 
-				{
-//	            	MergeSort.sort(shapes);
-				}
-			else if (sortType == 'i' || sortType == 'I') 
-				{
-	            	InsertionSort.insertionSort(shapes, compareType);
-				} 
-			else if (sortType == 'q' || sortType == 'Q') 
-				{
-	            	QuickSortUtil.quicksort(shapes, 0, shapes.length - 1, compareType);
-				} 
-			else if (sortType == 's' || sortType == 'S') 
-				{
-//	            	SelectionSort.sort(shapes);
-				} 
-			else if (sortType == 'z' || sortType == 'Z') 
-				{
-//					for researched method
-//            		.sort(shapes);
-				}
-		}
-		else if(compareType == 'a' || compareType == 'A')
-		{
-			
-		}
-		else if(compareType == 'v' || compareType == 'V')
-		{
-			
-		}
-    }
+//  private void sortShapes()
+//	{
+//		if(compareType == 'h' || compareType == 'H')
+//		{
+//			if(sortType == 'b' || sortType == 'B')
+//				{
+//					BubbleSort.bubbleSort(shapes);
+//				}
+//			else if (sortType == 'm' || sortType == 'M') 
+//				{
+////	            	MergeSort.sort(shapes);
+//				}
+//			else if (sortType == 'i' || sortType == 'I') 
+//				{
+//	            	InsertionSort.insertionSort(shapes, compareType);
+//				} 
+//			else if (sortType == 'q' || sortType == 'Q') 
+//				{
+//	            	QuickSortUtil.quicksort(shapes, 0, shapes.length - 1, compareType);
+//				} 
+//			else if (sortType == 's' || sortType == 'S') 
+//				{
+////	            	SelectionSort.sort(shapes);
+//				} 
+//			else if (sortType == 'z' || sortType == 'Z') 
+//				{
+////					for researched method
+////            		.sort(shapes);
+//				}
+//		}
+//		else if(compareType == 'a' || compareType == 'A')
+//		{
+//			
+//		}
+//		else if(compareType == 'v' || compareType == 'V')
+//		{
+//			
+//		}
+//    }
 	
 	//Method for displaying the sorted array of shapes
 	private void printShapes() 
