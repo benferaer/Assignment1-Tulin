@@ -81,6 +81,7 @@ public class SortManager
 			sortName = "Selection Sort";
 			break;
 		case 'b':
+			BubbleSort.bubbleSort(shapes, compareType);
 			sortName = "Bubble Sort";
 			break;
 		case 'm':
@@ -177,68 +178,92 @@ public class SortManager
 	}
   }
 
-  private void sortShapes()
-	{
-		if(compareType == 'h' || compareType == 'H')
-		{
-			if(sortType == 'b' || sortType == 'B')
-				{
-					BubbleSort.bubbleSort(shapes);
-				}
-			else if (sortType == 'm' || sortType == 'M') 
-				{
-//	            	MergeSort.sort(shapes);
-				}
-			else if (sortType == 'i' || sortType == 'I') 
-				{
-	            	InsertionSort.insertionSort(shapes, compareType);
-				} 
-			else if (sortType == 'q' || sortType == 'Q') 
-				{
-	            	QuickSortUtil.quicksort(shapes, 0, shapes.length - 1, compareType);
-				} 
-			else if (sortType == 's' || sortType == 'S') 
-				{
-//	            	SelectionSort.sort(shapes);
-				} 
-			else if (sortType == 'z' || sortType == 'Z') 
-				{
-//					for researched method
-//            		.sort(shapes);
-				}
-		}
-		else if(compareType == 'a' || compareType == 'A')
-		{
-			
-		}
-		else if(compareType == 'v' || compareType == 'V')
-		{
-			
-		}
-    }
+//  private void sortShapes()
+//	{
+//		if(compareType == 'h' || compareType == 'H')
+//		{
+//			if(sortType == 'b' || sortType == 'B')
+//				{
+//					BubbleSort.bubbleSort(shapes);
+//				}
+//			else if (sortType == 'm' || sortType == 'M') 
+//				{
+////	            	MergeSort.sort(shapes);
+//				}
+//			else if (sortType == 'i' || sortType == 'I') 
+//				{
+//	            	InsertionSort.insertionSort(shapes, compareType);
+//				} 
+//			else if (sortType == 'q' || sortType == 'Q') 
+//				{
+//	            	QuickSortUtil.quicksort(shapes, 0, shapes.length - 1, compareType);
+//				} 
+//			else if (sortType == 's' || sortType == 'S') 
+//				{
+////	            	SelectionSort.sort(shapes);
+//				} 
+//			else if (sortType == 'z' || sortType == 'Z') 
+//				{
+////					for researched method
+////            		.sort(shapes);
+//				}
+//		}
+//		else if(compareType == 'a' || compareType == 'A')
+//		{
+//			
+//		}
+//		else if(compareType == 'v' || compareType == 'V')
+//		{
+//			
+//		}
+//    }
 	
 	//Method for displaying the sorted array of shapes
 	private void printShapes() 
 	{
-		// If checks that the shape array has objects
+	    System.out.println("\n========================================");
+	    System.out.println("           SORTING RESULTS");
+	    System.out.println("========================================\n");
+
+	    // Ensure there are shapes to print
 	    if (shapes.length > 0) 
 	    {
-	        System.out.println("First value: " + shapes[0]); //prints the first value
+	        System.out.printf("%-20s %-12s %s\n", "Position", "Shape", "Value");
+	        System.out.println("---------------------------------------------------");
+	        System.out.printf("%-20s %-12s %s\n", "First element:", shapes[0].getClass().getSimpleName(), getSortValue(shapes[0], compareType));
 	    }
 
-	    // Loop through the array and print every thousandth shape starting from the 1000th element (index 999)
-	    for (int i = 999; i < shapes.length - 1; i++) // shapes.length - 1 ensures that the last element is not printed in the thousandth's format
+	    // Print every 1000th element with aligned formatting
+	    for (int i = 999; i < shapes.length; i += 1000) 
 	    {
-	        if ((i + 1) % 1000 == 0) // Print the 1000th element, 2000th element, and so on
-	        {  
-	            System.out.println((i + 1) + "-th element: " + shapes[i]);
-	        }
+	        System.out.printf("%-20s %-12s %s\n", (i + 1) + "-th element:", shapes[i].getClass().getSimpleName(), getSortValue(shapes[i], compareType));
 	    }
 
-	    // Print the last shape
+	    // Print the last element
 	    if (shapes.length > 0) 
 	    {
-	        System.out.println("Last value: " + shapes[shapes.length - 1]); //prints the last value
+	        System.out.printf("%-20s %-12s %s\n", "Last element:", shapes[shapes.length - 1].getClass().getSimpleName(), getSortValue(shapes[shapes.length - 1], compareType));
 	    }
+
+	    System.out.println("\n========================================");
 	}
-}
+
+	/**
+	 * Extracts the sorting attribute (Height, Volume, or Base Area) based on compareType.
+	 */
+	private static String getSortValue(Shape shape, char compareType) 
+	{
+	    switch (compareType) 
+	    {
+	        case 'h':
+	            return "Height: " + String.format("%,.3f", shape.getHeight());
+	        case 'v':
+	            return "Volume: " + String.format("%,.3f", shape.calcVolume());
+	        case 'a':
+	            return "Base Area: " + String.format("%,.3f", shape.calcBaseArea());
+	        default:
+	            return "Unknown attribute";
+	    }
+	}}
+
+
