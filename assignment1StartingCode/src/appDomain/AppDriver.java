@@ -1,4 +1,7 @@
 package appDomain;
+import java.io.IOException;
+
+import manager.SortManager;
 
 public class AppDriver
 {
@@ -19,6 +22,8 @@ public class AppDriver
 		// refer to demo02 KittySort.java on how to use a custom sorting
 		// algorithm on a list of comparables to sort using either the
 		// natural order (comparable) or other orders (comparators)
+		
+		new SortManager(args);
 
 	}
 
