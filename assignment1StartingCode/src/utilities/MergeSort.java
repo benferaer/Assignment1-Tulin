@@ -10,12 +10,25 @@ import shapes.Shape;
 
 public class MergeSort
 	{
+		/**
+		 * Sorts array of shapes using Merge Sort algorithm (descending)
+		 * @param shapes	Array of shapes for sorting
+		 * @param compareType	Comparison type( h height, v volume, a base area)
+		 */
 		public static void sort(Shape[] shapes, char compareType)
 		{
 			mergeSort(shapes, 0, shapes.length - 1, compareType);
 		}
 		
 		
+		/**
+		 * Method that splits the array recursively until single values, then merges each subarray in order until combined back into a single array.
+		 * This method calls itself until array is sorted
+		 * @param shapes	Array of shapes for sorting
+		 * @param left		Left index of array segment
+		 * @param right		Right index of array segment
+		 * @param compareType	Comparison type( h height, v volume, a base area)
+		 */
 		private static void mergeSort(Shape[] shapes, int left, int right, char compareType)
 		{
 			if (left < right)
@@ -27,6 +40,15 @@ public class MergeSort
 			}
 		}
 		
+		/**
+		 * Merges two sorted subarrays into one array sorted in descending order
+		 * 
+		 * @param shapes Array containing subarrays that will be merged
+		 * @param left	Left index of first subarray
+		 * @param mid	Mid index dividing two subarrays
+		 * @param right	Right index of second subarray
+		 * @param compareType Comparison type( h height, v volume, a base area)
+		 */
 		private static void merge(Shape[] shapes, int left, int mid, int right, char compareType)
 		{
 			int n1 = mid - left + 1;
@@ -55,6 +77,14 @@ public class MergeSort
 			}
 		}
 		
+		/**
+	     * Compares two Shape objects based on the selected type
+	     *
+	     * @param s1          1st shape
+	     * @param s2          2nd shape
+	     * @param compareType 'v' for volume, 'a' for base area, 'h' for height
+	     * @return positive number if s1 > s2, zero if equal, and a negative number if s1 < s2
+	     */
 		private static int compare(Shape s1, Shape s2, char compareType) 
 	    {
 	        switch (compareType) 
