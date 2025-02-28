@@ -1,5 +1,4 @@
 package utilities;
-import java.util.List;
 import java.util.Random;
 
 import shapes.Shape;
@@ -49,10 +48,10 @@ public class QuickSortUtil
         	switch (compareType)
         	{
         	case 'v':
-        		swap = swap = (shapes[j].compareVolume(pivot)) > 0;
+        		swap = (shapes[j].compareVolume(pivot)) > 0;
         		break;
         	case 'a':
-        		swap = swap = (shapes[j].compareBaseArea(pivot)) > 0;
+        		swap = (shapes[j].compareBaseArea(pivot)) > 0;
         		break;
         	case 'h':
         		swap = (shapes[j].compareTo(pivot)) > 0;
