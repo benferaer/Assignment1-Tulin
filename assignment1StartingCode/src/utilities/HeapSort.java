@@ -41,31 +41,31 @@ public class HeapSort {
 	
 	private static void heapify(Shape[] shapes, int n, int i, char compareType) 
     {
-        int largest = i;  // Initialize largest as root
+        int smallest = i;  // Initialize smallest as root to comply with descending order requirement
         int left = 2 * i + 1;  // Left child
         int right = 2 * i + 2; // Right child
 
      // If left child is larger than root
-        if (left < n && compare(shapes[left], shapes[largest], compareType) > 0) 
+        if (left < n && compare(shapes[left], shapes[smallest], compareType) < 0) 
         {
-            largest = left;
+            smallest = left;
         }
 
         // If right child is larger than largest so far
-        if (right < n && compare(shapes[right], shapes[largest], compareType) > 0) 
+        if (right < n && compare(shapes[right], shapes[smallest], compareType) < 0) 
         {
-            largest = right;
+            smallest = right;
         }
 
         // If largest is not root
-        if (largest != i) 
+        if (smallest != i) 
         {
             Shape temp = shapes[i];
-            shapes[i] = shapes[largest];
-            shapes[largest] = temp;
+            shapes[i] = shapes[smallest];
+            shapes[smallest] = temp;
 
             // Recursively heapify the affected subtree
-            heapify(shapes, n, largest, compareType);
+            heapify(shapes, n, smallest, compareType);
         }
         
     }

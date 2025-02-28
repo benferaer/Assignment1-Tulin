@@ -9,7 +9,9 @@ public class Cone extends Shape
 	private double radius;
 
 	/**
-	 * 
+	 * Creates an instance of a Cone shape
+	 * @param height
+	 * @param radius
 	 */
 	public Cone(double height, double radius) 
 	{
@@ -18,8 +20,8 @@ public class Cone extends Shape
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Returns radius of the Cone shape
+	 * @return radius
 	 */
 	public double getRadius() 
 	{
