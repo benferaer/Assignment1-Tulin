@@ -16,15 +16,16 @@ public class QuickSortUtil
 	 * @param low Lower index limit of the array
 	 * @param high Higher index limit of the array
 	 */
-	public static void random(Shape[] shapes, int low, int high)
-	{
-		Random rand= new Random(); 
-        int pivot = rand.nextInt(high-low)+low; 
-         
-        Shape temp1=shapes[pivot];  
-        shapes[pivot]=shapes[high]; 
-        shapes[high]=temp1; 
-	}
+//	public static void random(Shape[] shapes, int low, int high)
+//	{
+//		if (low == high) return; //Needed to prevent invalid range
+//		Random rand= new Random(); 
+//        int pivot = low + rand.nextInt(high-low+1); 
+//         
+//        Shape temp1=shapes[pivot];  
+//        shapes[pivot]=shapes[high]; 
+//        shapes[high]=temp1; 
+//	}
 	
 	/**
 	 * Partition logic of quick sort. Initial quick sort algorithm was taken from Geeksforgeeks
@@ -35,54 +36,40 @@ public class QuickSortUtil
 	 */
 	public static int partition(Shape shapes[], int low, int high, char compareType)
 	{
-		// pivot is chosen randomly 
-        random(shapes,low,high);
+//		// pivot is chosen randomly 
+//        random(shapes,low,high);
         Shape pivot = shapes[high]; 
      
  
         int i = (low-1); // index of smaller element 
         for (int j = low; j < high; j++) 
         { 
-            // If current element is smaller than or equal to pivot
+        	boolean swap = false; //Swap indicator for after comparing values depending on the following switch cases
+
         	switch (compareType)
         	{
         	case 'v':
-        		if (shapes[j].calcVolume() > pivot.calcVolume()) 
-                { 
-                    i++; 
-     
-                    // swap shapes[i] and shapes[j] 
-                    Shape temp = shapes[i]; 
-                    shapes[i] = shapes[j]; 
-                    shapes[j] = temp; 
-                } 
+        		swap = swap = (shapes[j].compareVolume(pivot)) > 0;
         		break;
         	case 'a':
-        		if (shapes[j].calcBaseArea() > pivot.calcBaseArea()) 
-                { 
-                    i++; 
-     
-                    // swap shapes[i] and shapes[j] 
-                    Shape temp = shapes[i]; 
-                    shapes[i] = shapes[j]; 
-                    shapes[j] = temp; 
-                } 
+        		swap = swap = (shapes[j].compareBaseArea(pivot)) > 0;
         		break;
         	case 'h':
-        		if (shapes[j].getHeight() > pivot.getHeight()) 
-                { 
-                    i++; 
-     
-                    // swap shapes[i] and shapes[j] 
-                    Shape temp = shapes[i]; 
-                    shapes[i] = shapes[j]; 
-                    shapes[j] = temp; 
-                } 
+        		swap = (shapes[j].compareTo(pivot)) > 0;
         		break;
         	}	
+        	
+        	if(swap)
+        	{
+        		i++;
+        		Shape temp = shapes[i];
+        		shapes[i] = shapes[j];
+        		shapes[j] = temp;
+        	}
             
         }
-        // swap arr[i+1] and arr[high] (or pivot) 
+        
+        //Below swaps pivot into the proper position
         Shape temp = shapes[i+1]; 
         shapes[i+1] = shapes[high]; 
         shapes[high] = temp; 
@@ -91,15 +78,20 @@ public class QuickSortUtil
 	}
 	
 	public static void quicksort(Shape shapes[], int low, int high, char compareType)
-	{
-		compareType = compareType;
-		
+	{	
 		if (low < high)
 		{
 			int pi = partition(shapes, low, high, compareType);
 			
-			quicksort(shapes, low, pi-1, compareType);
-			quicksort(shapes, pi+1, high, compareType);
+			if (pi - 1 > low)
+			{
+				quicksort(shapes, low, pi-1, compareType);
+			}
+			
+			if (pi + 1 < high)
+			{
+				quicksort(shapes, pi+1, high, compareType);
+			}
 		}
 	}
 

@@ -24,8 +24,7 @@ public class TriangularPrism extends Shape
 	@Override
 	public double calcVolume() 
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return calcBaseArea() * height;
 	}
 
 	@Override
