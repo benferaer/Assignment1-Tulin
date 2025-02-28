@@ -13,7 +13,9 @@ import shapes.Shape;
 import shapes.SquarePrism;
 import shapes.TriangularPrism;
 import utilities.QuickSortUtil;
-import utilities.BubbleSort;  
+import utilities.BubbleSort;
+import utilities.InsertionSort;
+import utilities.MergeSort;  
 
 //refer to demo001 BasicFileIO.java for a simple example on how to
 		// read data from a text file
@@ -158,8 +160,38 @@ public class SortManager
 		{
 			if(sortType == 'b' || sortType == 'B')
 				{
-					BubbleSort.sort(shapes);
+					BubbleSort.bubbleSort(shapes);
 				}
+			else if (sortType == 'm' || sortType == 'M') 
+				{
+//	            	MergeSort.sort(shapes);
+				}
+			else if (sortType == 'i' || sortType == 'I') 
+				{
+	            	InsertionSort.insertionSort(shapes, compareType);
+				} 
+			else if (sortType == 'q' || sortType == 'Q') 
+				{
+	            	QuickSortUtil.quicksort(shapes, 0, shapes.length - 1, compareType);
+				} 
+			else if (sortType == 's' || sortType == 'S') 
+				{
+//	            	SelectionSort.sort(shapes);
+				} 
+			else if (sortType == 'z' || sortType == 'Z') 
+				{
+//					for researched method
+//            		.sort(shapes);
+				}
+		}
+		else if(compareType == 'a' || compareType == 'A')
+		{
+			
+		}
+		else if(compareType == 'v' || compareType == 'V')
+		{
+			
+		}
     }
 	
 	//Method for displaying the sorted array of shapes

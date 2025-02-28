@@ -5,7 +5,7 @@ import shapes.Shape;
 public class BubbleSort
 {
 
-	public static void sort(Shape[] shapes)
+	public static void bubbleSort(Shape[] shapes)
 	{
 		// TODO Auto-generated method stub
 			
