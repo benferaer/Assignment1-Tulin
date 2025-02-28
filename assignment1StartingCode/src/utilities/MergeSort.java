@@ -20,11 +20,16 @@ public class MergeSort
 			if (left < right)
 			{
 				int mid = left + (right - left) / 2;
+				mergeSort(shapes, left, mid, comparator);
+				mergeSort(shapes, mid + 1, right, comparator);
+				merge(shapes, left, mid, right, comparator);
 			}
 		}
 		
-		private static void merge()
+		private static void merge(Shape[] shapes, int left, int mid, int right, Comparator<Shape> comparator)
 		{
+			int n1 = mid - left + 1;
+			
 			
 		}
 	}

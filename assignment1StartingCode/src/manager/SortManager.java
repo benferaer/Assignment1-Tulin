@@ -1,6 +1,7 @@
 package manager;
 
 import shapes.Shape;
+import utilities.BubbleSort;
 
 //refer to demo001 BasicFileIO.java for a simple example on how to
 		// read data from a text file
@@ -23,7 +24,7 @@ public class SortManager
 	
 	public SortManager(String[] args)
 	{
-		for(String s: args)
+		for(String s : args)
 		{
 			System.out.println(s);
 			if(s.startsWith("-f") || s.startsWith("-F"))
@@ -32,15 +33,16 @@ public class SortManager
 			}
 			else if (s.startsWith("-t") || s.startsWith("-T"))
 			{
-				compareType = s.charAt(2);
+				compareType = s.substring(2).charAt(0);
 			}
 			else if (s.startsWith("-s") || s.startsWith("-S"))
 			{
-				sortType = s.charAt(2);
+				sortType = s.substring(2).charAt(0);
 			}
 		}
 		
 		loadShapes();
+		sortShapes();
 		
 	}
 	
@@ -48,5 +50,18 @@ public class SortManager
 	{
 		//from fileName, load shapes
 		//first line is the length of the array
+		
+		
+	}
+	
+	private void sortShapes()
+	{
+		if(compareType == 'h' || compareType == 'H')
+		{
+			if(sortType == 'b' || sortType == 'B')
+				{
+					BubbleSort.sort(shapes);
+				}
+		}
 	}
 }
