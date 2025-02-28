@@ -221,23 +221,31 @@ public class SortManager
 	//Method for displaying the sorted array of shapes
 	private void printShapes() 
 	{
+	    System.out.println("\n========================================");
+	    System.out.println("           SORTING RESULTS");
+	    System.out.println("========================================\n");
+
 	    // Ensure there are shapes to print
 	    if (shapes.length > 0) 
 	    {
-	        System.out.println("First element is: " + shapes[0].getClass().getSimpleName() + " " + getSortValue(shapes[0], compareType));
+	        System.out.printf("%-20s %-12s %s\n", "Position", "Shape", "Value");
+	        System.out.println("---------------------------------------------------");
+	        System.out.printf("%-20s %-12s %s\n", "First element:", shapes[0].getClass().getSimpleName(), getSortValue(shapes[0], compareType));
 	    }
 
-	    // Print every 1000th element correctly
+	    // Print every 1000th element with aligned formatting
 	    for (int i = 999; i < shapes.length; i += 1000) 
 	    {
-	        System.out.println((i + 1) + "-th element: " + shapes[i].getClass().getSimpleName() + " " + getSortValue(shapes[i], compareType));
+	        System.out.printf("%-20s %-12s %s\n", (i + 1) + "-th element:", shapes[i].getClass().getSimpleName(), getSortValue(shapes[i], compareType));
 	    }
 
 	    // Print the last element
 	    if (shapes.length > 0) 
 	    {
-	        System.out.println("Last element is: " + shapes[shapes.length - 1].getClass().getSimpleName() + " " + getSortValue(shapes[shapes.length - 1], compareType));
+	        System.out.printf("%-20s %-12s %s\n", "Last element:", shapes[shapes.length - 1].getClass().getSimpleName(), getSortValue(shapes[shapes.length - 1], compareType));
 	    }
+
+	    System.out.println("\n========================================");
 	}
 
 	/**
@@ -248,13 +256,14 @@ public class SortManager
 	    switch (compareType) 
 	    {
 	        case 'h':
-	            return "Height: " + shape.getHeight();
+	            return "Height: " + String.format("%,.3f", shape.getHeight());
 	        case 'v':
-	            return "Volume: " + shape.calcVolume();
+	            return "Volume: " + String.format("%,.3f", shape.calcVolume());
 	        case 'a':
-	            return "Base Area: " + shape.calcBaseArea();
+	            return "Base Area: " + String.format("%,.3f", shape.calcBaseArea());
 	        default:
 	            return "Unknown attribute";
 	    }
 	}}
+
 
