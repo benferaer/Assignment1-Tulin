@@ -22,7 +22,8 @@ public class MergeSort
 		
 		
 		/**
-		 * Method that splits the array recursively until single values, then merges each subarray in order until combined back into a single array.
+		 * Method that splits the array recursively until single values, then calls merge method to
+		 *  merge each subarray in order until combined back into a single array.
 		 * This method calls itself until array is sorted
 		 * @param shapes	Array of shapes for sorting
 		 * @param left		Left index of array segment
