@@ -221,25 +221,40 @@ public class SortManager
 	//Method for displaying the sorted array of shapes
 	private void printShapes() 
 	{
-		// If checks that the shape array has objects
+	    // Ensure there are shapes to print
 	    if (shapes.length > 0) 
 	    {
-	        System.out.println("First value: " + shapes[0]); //prints the first value
+	        System.out.println("First element is: " + shapes[0].getClass().getSimpleName() + " " + getSortValue(shapes[0], compareType));
 	    }
 
-	    // Loop through the array and print every thousandth shape starting from the 1000th element (index 999)
-	    for (int i = 999; i < shapes.length - 1; i++) // shapes.length - 1 ensures that the last element is not printed in the thousandth's format
+	    // Print every 1000th element correctly
+	    for (int i = 999; i < shapes.length; i += 1000) 
 	    {
-	        if ((i + 1) % 1000 == 0) // Print the 1000th element, 2000th element, and so on
-	        {  
-	            System.out.println((i + 1) + "-th element: " + shapes[i]);
-	        }
+	        System.out.println((i + 1) + "-th element: " + shapes[i].getClass().getSimpleName() + " " + getSortValue(shapes[i], compareType));
 	    }
 
-	    // Print the last shape
+	    // Print the last element
 	    if (shapes.length > 0) 
 	    {
-	        System.out.println("Last value: " + shapes[shapes.length - 1]); //prints the last value
+	        System.out.println("Last element is: " + shapes[shapes.length - 1].getClass().getSimpleName() + " " + getSortValue(shapes[shapes.length - 1], compareType));
 	    }
 	}
-}
+
+	/**
+	 * Extracts the sorting attribute (Height, Volume, or Base Area) based on compareType.
+	 */
+	private static String getSortValue(Shape shape, char compareType) 
+	{
+	    switch (compareType) 
+	    {
+	        case 'h':
+	            return "Height: " + shape.getHeight();
+	        case 'v':
+	            return "Volume: " + shape.calcVolume();
+	        case 'a':
+	            return "Base Area: " + shape.calcBaseArea();
+	        default:
+	            return "Unknown attribute";
+	    }
+	}}
+
