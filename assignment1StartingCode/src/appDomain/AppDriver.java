@@ -1,8 +1,11 @@
 package appDomain;
-import java.io.IOException;
 
 import manager.SortManager;
 
+/**
+ * App driver where run time arguments are configured
+ * @author Tulin
+ */
 public class AppDriver
 {
 

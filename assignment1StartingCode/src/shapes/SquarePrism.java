@@ -1,50 +1,38 @@
 package shapes;
 
 /**
- * 
+ * Subclass of Prism representing a Square Prism with a height and side
  * @author Tulin
  */
 
-public class SquarePrism extends Shape
+public class SquarePrism extends Prism
 {
-	private double length;
-
 	/**
-	 * 
+	 *  creates a square prism with specified height and side length
 	 */
-	public SquarePrism(double height, double length) 
+	public SquarePrism(double height, double side) 
 	{
-		super(height);
-		this.length = length;
+		super(height, side);
 	}
 
 	/**
-	 * 
-	 * @return
-	 */
-	public double getLength() 
-	{
-		return length;
-	}
-
+     * Calculates the base area of the square prism
+     * @return The base area of the square prism
+     */
+	
 	@Override
 	public double calcBaseArea() 
 	{
-		return length * length;
+		return getSide() * getSide();
 	}
 
-	@Override
-	public double calcVolume() 
-	{
-		return calcBaseArea() * height;
-	}
 
 	@Override
-	public String toString() 
-	{
-		return "SquarePrism [getLength()=" + getLength() + ", calcBaseArea()=" + calcBaseArea() + ", calcVolume()="
+	public String toString() {
+		return "SquarePrism [calcBaseArea()=" + calcBaseArea() + ", getSide()=" + getSide() + ", calcVolume()="
 				+ calcVolume() + ", getHeight()=" + getHeight() + "]";
 	}
+
 	
 
 }

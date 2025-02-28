@@ -1,47 +1,36 @@
 package shapes;
 
 /**
- * 
+ * Subclass of Prism representing an Octagonal Prism with a height and base side length
  * @author Tulin
  */
 
-public class OctagonalPrism extends Shape
+public class OctagonalPrism extends Prism
 {	
-	private double length;
 
 	/**
-	 * 
+	 * Creates an octagonal prism with the specified height and base side length
 	 */
-	public OctagonalPrism(double height, double length) 
+	public OctagonalPrism(double height, double side) 
 	{
-		super(height);
-		this.length = length;
+		super(height, side);
 	}
 
-	public double getLength() 
-	{
-		return length;
-	}
-
+	/**
+     * Calculates the base area of the octagonal prism
+     * @return The base area of the octagonal prism
+     */
 	@Override
 	public double calcBaseArea() 
 	{
-		return 2 * (1 + Math.sqrt(2)) * (length * length);
+		return 2 * (1 + Math.sqrt(2)) * (getSide() * getSide());
 	}
 
 	@Override
-	public double calcVolume() 
-	{
-		return calcBaseArea() * height;
-	}
-
-	@Override
-	public String toString() 
-	{
-		return "OctagonalPrism [getLength()=" + getLength() + ", calcBaseArea()=" + calcBaseArea() + ", calcVolume()="
+	public String toString() {
+		return "OctagonalPrism [calcBaseArea()=" + calcBaseArea() + ", getSide()=" + getSide() + ", calcVolume()="
 				+ calcVolume() + ", getHeight()=" + getHeight() + "]";
 	}
-	
 	
 	
 	
