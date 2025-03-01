@@ -93,8 +93,8 @@ public class SortManager
 		long endTime = System.nanoTime();
 		
 		//Prints the sorted Shapes array
-		printShapes();
-//		testPrint(); //For printing list of shapes and test sort results
+//		printShapes();
+		testPrint(); //For printing list of shapes and test sort results
 		
         // Calculate and print the elapsed time in milliseconds
         long elapsedTime = (endTime - startTime) / 1000000; // Convert to milliseconds
@@ -181,50 +181,50 @@ public class SortManager
   }
 	
 	//Method for displaying the sorted array of shapes
-	private void printShapes() 
-	{
-	    System.out.println("\n========================================");
-	    System.out.println("           SORTING RESULTS");
-	    System.out.println("========================================\n");
-
-	    // Ensure there are shapes to print
-	    if (shapes.length > 0) 
-	    {
-	        System.out.printf("%-20s %-20s %s\n", "Position", "Shape", "Value");
-	        System.out.println("---------------------------------------------------");
-	        System.out.printf("%-20s %-20s %s\n", "First element:", shapes[0].getClass().getSimpleName(), getSortValue(shapes[0], compareType));
-	    }
-
-	    // Print every 1000th element with aligned formatting
-	    for (int i = 999; i < shapes.length-1; i += 1000) //i < shapes.length-1 ensures that the last element is not displayed twice
-	    {
-	        System.out.printf("%-20s %-20s %s\n", (i + 1) + "-th element:", shapes[i].getClass().getSimpleName(), getSortValue(shapes[i], compareType));
-	    }
-
-	    // Print the last element
-	    if (shapes.length > 0) 
-	    {
-	        System.out.printf("%-20s %-20s %s\n", "Last element:", shapes[shapes.length - 1].getClass().getSimpleName(), getSortValue(shapes[shapes.length - 1], compareType));
-	    }
-
-	    System.out.println("\n========================================");
-	}
-	
-	//Method just for testing sort results of short files, i.e. shapes1.txt
-//	private void testPrint() 
+//	private void printShapes() 
 //	{
 //	    System.out.println("\n========================================");
 //	    System.out.println("           SORTING RESULTS");
 //	    System.out.println("========================================\n");
 //
-//	    // Print every 1000th element with aligned formatting
-//	    for (int i = 0; i < shapes.length; i ++) //i < shapes.length-1 ensures that the last element is not displayed twice
+//	    // Ensure there are shapes to print
+//	    if (shapes.length > 0) 
 //	    {
-//	        System.out.printf("%-20s %-12s %s\n", (i + 1) + "-th element:", shapes[i].getClass().getSimpleName(), getSortValue(shapes[i], compareType));
+//	        System.out.printf("%-20s %-20s %s\n", "Position", "Shape", "Value");
+//	        System.out.println("---------------------------------------------------");
+//	        System.out.printf("%-20s %-20s %s\n", "First element:", shapes[0].getClass().getSimpleName(), getSortValue(shapes[0], compareType));
+//	    }
+//
+//	    // Print every 1000th element with aligned formatting
+//	    for (int i = 999; i < shapes.length-1; i += 1000) //i < shapes.length-1 ensures that the last element is not displayed twice
+//	    {
+//	        System.out.printf("%-20s %-20s %s\n", (i + 1) + "-th element:", shapes[i].getClass().getSimpleName(), getSortValue(shapes[i], compareType));
+//	    }
+//
+//	    // Print the last element
+//	    if (shapes.length > 0) 
+//	    {
+//	        System.out.printf("%-20s %-20s %s\n", "Last element:", shapes[shapes.length - 1].getClass().getSimpleName(), getSortValue(shapes[shapes.length - 1], compareType));
 //	    }
 //
 //	    System.out.println("\n========================================");
 //	}
+	
+	//Method just for testing sort results of short files, i.e. shapes1.txt
+	private void testPrint() 
+	{
+	    System.out.println("\n========================================");
+	    System.out.println("           SORTING RESULTS");
+	    System.out.println("========================================\n");
+
+	    // Print every 1000th element with aligned formatting
+	    for (int i = 0; i < shapes.length; i ++) //i < shapes.length-1 ensures that the last element is not displayed twice
+	    {
+	        System.out.printf("%-20s %-20s %s\n", (i + 1) + "-th element:", shapes[i].getClass().getSimpleName(), getSortValue(shapes[i], compareType));
+	    }
+
+	    System.out.println("\n========================================");
+	}
 	
 	/**
 	 * Extracts the sorting attribute (Height, Volume, or Base Area) based on compareType.
