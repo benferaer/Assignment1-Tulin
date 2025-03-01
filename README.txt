@@ -141,10 +141,10 @@ Troubleshooting & Notes
 
 1. Incorrect Command Arguments
 
-If an incorrect argument is entered, the program will display an error message and instructions for correct usage.
+	- If an incorrect argument is entered, the program will display an error message and instructions for correct usage.
 
 2. Input File Placement
 
-Make sure the input file (shapes1.txt, etc.) is in the src/res/ folder for Eclipse execution.
+	- Make sure the input file (shapes1.txt, etc.) is in the src/res/ folder for Eclipse execution.
 
-If using command-line execution, provide an absolute or relative path to the file.
+	- If using command-line execution, provide an absolute or relative path to the file.
