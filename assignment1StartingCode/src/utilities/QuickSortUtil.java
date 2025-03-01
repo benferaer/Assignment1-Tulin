@@ -29,8 +29,8 @@ public class QuickSortUtil
 	/**
 	 * Partition logic of quick sort. Initial quick sort algorithm was taken from Geeksforgeeks
 	 * @param shapes
-	 * @param low
-	 * @param high
+	 * @param low lowest limit of the array length
+	 * @param high highest limit of the array length
 	 * @return next partition value
 	 */
 	public static int partition(Shape shapes[], int low, int high, char compareType)
@@ -76,6 +76,13 @@ public class QuickSortUtil
         return i+1;
 	}
 	
+	/**
+	 * Main quick sort method that will be called in the sortManager
+	 * @param shapes
+	 * @param low
+	 * @param high
+	 * @param compareType
+	 */
 	public static void quicksort(Shape shapes[], int low, int high, char compareType)
 	{	
 		if (low < high)
