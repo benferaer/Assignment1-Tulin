@@ -35,72 +35,118 @@ public class SortManager
 	 * Main method that runs the program, taking args of the AppDriver as the program input
 	 * @param args
 	 */
-	public SortManager(String[] args)
+	public SortManager(String[] args) 
 	{
-		for(String s : args)
-		{
-			System.out.println(s);
-			if(s.startsWith("-f") || s.startsWith("-F"))
-			{
-				fileName = s.substring(2);
-			}
-			else if (s.startsWith("-t") || s.startsWith("-T"))
-			{
-				compareType = s.substring(2).charAt(0);
-			}
-			else if (s.startsWith("-s") || s.startsWith("-S"))
-			{
-				sortType = s.substring(2).charAt(0);
-			}
-		}
-		
-		//Loads shapes from file
-		loadShapes();
-		
-		//Starts sort timer
-		long startTime = System.nanoTime();
-		
-		//Applies the identified sort method from args
-		switch (Character.toLowerCase(sortType))
-		{
-		case 'q':
-			QuickSortUtil.quicksort(shapes, 0, shapes.length - 1, compareType);
-			sortName = "Quick Sort";
-			break;
-		case 'i':
-			InsertionSort.insertionSort(shapes, compareType);
-			sortName = "Insertion Sort";
-			break;
-		case 'h':
-			HeapSort.heapSort(shapes, compareType);
-			sortName = "Heap Sort";
-			break;
-		case 's':
-			SelectionSort.selectionSort(shapes, compareType);
-			sortName = "Selection Sort";
-			break;
-		case 'b':
-			BubbleSort.bubbleSort(shapes, compareType);
-			sortName = "Bubble Sort";
-			break;
-		case 'm':
-			MergeSort.sort(shapes, compareType);
-			sortName = "Merge Sort";
-			break;
-		}
-		
-		//Ends sort timer
-		long endTime = System.nanoTime();
-		
-		//Prints the sorted Shapes array
-		printShapes();
-//		testPrint(); //For printing list of shapes and test sort results
-		
-        // Calculate and print the elapsed time in milliseconds
-        long elapsedTime = (endTime - startTime) / 1000000; // Convert to milliseconds
-        
-        System.out.println(sortName + " run time was: " + elapsedTime + " milliseconds");
+	    // Parse command-line arguments
+	    for (String s : args) 
+	    {
+	        System.out.println(s);
+	        if (s.startsWith("-f") || s.startsWith("-F")) 
+	        {
+	            fileName = s.substring(2);
+	        } 
+	        else if (s.startsWith("-t") || s.startsWith("-T")) 
+	        {
+	            compareType = s.substring(2).charAt(0);
+	        } 
+	        else if (s.startsWith("-s") || s.startsWith("-S")) 
+	        {
+	            sortType = s.substring(2).charAt(0);
+	        } 
+	        else 
+	        {
+	            System.out.println("❌ Error: Invalid argument detected -> " + s);
+	            printUsage();
+	            return;
+	        }
+	    }
+
+	    // Validate required arguments
+	    if (fileName == null || compareType == '\0' || sortType == '\0') 
+	    {
+	        System.out.println("❌ Error: Missing required command-line arguments!");
+	        printUsage();
+	        return;
+	    }
+
+	    // Validate compare type
+	    if (compareType != 'h' && compareType != 'v' && compareType != 'a') 
+	    {
+	        System.out.println("❌ Error: Invalid comparison type '" + compareType + "'. Allowed values: h (height), v (volume), a (base area).");
+	        printUsage();
+	        return;
+	    }
+
+	    // Validate sorting algorithm
+	    if (sortType != 'b' && sortType != 's' && sortType != 'i' && sortType != 'm' && sortType != 'q' && sortType != 'z') 
+	    {
+	        System.out.println("❌ Error: Invalid sorting algorithm '" + sortType + "'. Allowed values: b (Bubble), s (Selection), i (Insertion), m (Merge), q (Quick), z (Heap).");
+	        printUsage();
+	        return;
+	    }
+
+	    // Loads shapes from file
+	    loadShapes();
+
+	    // Starts sorting timer
+	    long startTime = System.nanoTime();
+
+	    // Applies sorting algorithm
+	    switch (Character.toLowerCase(sortType)) 
+	    {
+	        case 'q':
+	            QuickSortUtil.quicksort(shapes, 0, shapes.length - 1, compareType);
+	            sortName = "Quick Sort";
+	            break;
+	        case 'i':
+	            InsertionSort.insertionSort(shapes, compareType);
+	            sortName = "Insertion Sort";
+	            break;
+	        case 'h':
+	            HeapSort.heapSort(shapes, compareType);
+	            sortName = "Heap Sort";
+	            break;
+	        case 's':
+	            SelectionSort.selectionSort(shapes, compareType);
+	            sortName = "Selection Sort";
+	            break;
+	        case 'b':
+	            BubbleSort.bubbleSort(shapes, compareType);
+	            sortName = "Bubble Sort";
+	            break;
+	        case 'm':
+	            MergeSort.sort(shapes, compareType);
+	            sortName = "Merge Sort";
+	            break;
+	    }
+
+	    // Ends sorting timer
+	    long endTime = System.nanoTime();
+
+	    // Prints sorted results
+	    printShapes();
+
+	    // Calculate and print sorting time
+	    long elapsedTime = (endTime - startTime) / 1_000_000; // Convert to milliseconds
+	    System.out.println(sortName + " run time was: " + elapsedTime + " milliseconds");
 	}
+
+	/**
+	 * Prints correct command-line usage format.
+	 */
+	private static void printUsage() 
+	{
+	    System.out.println("\n✅ Correct Usage:");
+	    System.out.println("   java -jar Sort.jar -f<file_name> -t<h/v/a> -s<b/s/i/m/q/z>\n");
+	    System.out.println("   -f or -F  : Specify input file (e.g., -fshapes1.txt)");
+	    System.out.println("   -t or -T  : Choose comparison type (h = height, v = volume, a = base area)");
+	    System.out.println("   -s or -S  : Choose sorting algorithm (b = Bubble, s = Selection, i = Insertion, m = Merge, q = Quick, z = Heap)");
+	    System.out.println("\n✅ Example Commands:");
+	    System.out.println("   java -jar Sort.jar -fshapes1.txt -Tv -Sb");
+	    System.out.println("   java -jar Sort.jar -ta -sQ -f\"res/shapes1.txt\"");
+	    System.out.println("   java -jar Sort.jar -tH -F\"C:\\temp\\shapes1.txt\" -sB\n");
+	}
+
 	
 	/**
 	 * Method for loading the Shapes array from the file name define in args
@@ -209,22 +255,6 @@ public class SortManager
 
 	    System.out.println("\n========================================");
 	}
-	
-	//Method just for testing sort results of short files, i.e. shapes1.txt
-//	private void testPrint() 
-//	{
-//	    System.out.println("\n========================================");
-//	    System.out.println("           SORTING RESULTS");
-//	    System.out.println("========================================\n");
-//
-//	    // Print every 1000th element with aligned formatting
-//	    for (int i = 0; i < shapes.length; i ++) //i < shapes.length-1 ensures that the last element is not displayed twice
-//	    {
-//	        System.out.printf("%-20s %-20s %s\n", (i + 1) + "-th element:", shapes[i].getClass().getSimpleName(), getSortValue(shapes[i], compareType));
-//	    }
-//
-//	    System.out.println("\n========================================");
-//	}
 	
 	/**
 	 * Extracts the sorting attribute (Height, Volume, or Base Area) based on compareType.
