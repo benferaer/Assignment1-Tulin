@@ -242,6 +242,7 @@ public class SortManager
 	        default:
 	            return "Unknown attribute";
 	    }
-	}}
+	}
+}
 
 
