@@ -85,6 +85,7 @@ public class SortManager
 			sortName = "Bubble Sort";
 			break;
 		case 'm':
+			MergeSort.sort(shapes, compareType);
 			sortName = "Merge Sort";
 			break;
 		}
@@ -228,21 +229,21 @@ public class SortManager
 	    // Ensure there are shapes to print
 	    if (shapes.length > 0) 
 	    {
-	        System.out.printf("%-20s %-12s %s\n", "Position", "Shape", "Value");
+	        System.out.printf("%-20s %-20s %s\n", "Position", "Shape", "Value");
 	        System.out.println("---------------------------------------------------");
-	        System.out.printf("%-20s %-12s %s\n", "First element:", shapes[0].getClass().getSimpleName(), getSortValue(shapes[0], compareType));
+	        System.out.printf("%-20s %-20s %s\n", "First element:", shapes[0].getClass().getSimpleName(), getSortValue(shapes[0], compareType));
 	    }
 
 	    // Print every 1000th element with aligned formatting
 	    for (int i = 999; i < shapes.length; i += 1000) 
 	    {
-	        System.out.printf("%-20s %-12s %s\n", (i + 1) + "-th element:", shapes[i].getClass().getSimpleName(), getSortValue(shapes[i], compareType));
+	        System.out.printf("%-20s %-20s %s\n", (i + 1) + "-th element:", shapes[i].getClass().getSimpleName(), getSortValue(shapes[i], compareType));
 	    }
 
 	    // Print the last element
 	    if (shapes.length > 0) 
 	    {
-	        System.out.printf("%-20s %-12s %s\n", "Last element:", shapes[shapes.length - 1].getClass().getSimpleName(), getSortValue(shapes[shapes.length - 1], compareType));
+	        System.out.printf("%-20s %-20s %s\n", "Last element:", shapes[shapes.length - 1].getClass().getSimpleName(), getSortValue(shapes[shapes.length - 1], compareType));
 	    }
 
 	    System.out.println("\n========================================");
