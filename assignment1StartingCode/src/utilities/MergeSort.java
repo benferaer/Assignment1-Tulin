@@ -1,6 +1,5 @@
 package utilities;
 import java.util.Arrays;
-import java.util.Comparator;
 import shapes.Shape;
 
 /**
